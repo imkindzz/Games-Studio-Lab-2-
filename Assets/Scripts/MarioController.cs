@@ -75,7 +75,7 @@ public class MarioController : MonoBehaviour
         
         
 
-        Debug.Log("X Velocity: " + rb.velocity.x + "|  Y Velocity: " + rb.velocity.y);
+        //Debug.Log("X Velocity: " + rb.velocity.x + "|  Y Velocity: " + rb.velocity.y);
     }
 
     void Jump()
