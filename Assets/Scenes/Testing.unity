@@ -382,6 +382,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1339245517}
+    - target: {fileID: 9012438569193384389, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
+      propertyPath: jumpHeight
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -462,7 +466,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.140483, y: 0.08835995}
+  m_Size: {x: 0.9, y: 0.08835995}
   m_EdgeRadius: 0
 --- !u!61 &1726186630
 BoxCollider2D:
