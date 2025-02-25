@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - Question Mark
+  - Tube Head
+  - Wall
   layers:
   - Default
   - TransparentFX
