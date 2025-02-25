@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 253882050933407146}
   - component: {fileID: 8874756902240137614}
   - component: {fileID: 9012438569193384389}
+  - component: {fileID: 8250641048590229529}
   m_Layer: 0
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +185,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &9012438569193384389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +199,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpHeight: 8
+  jumpHeight: 12
   floorLayer:
     serializedVersion: 2
     m_Bits: 8
+  animator: {fileID: 7721565248155718951}
+--- !u!114 &8250641048590229529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3203058862507517817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85bb4c2d79fdd04ba8bda65456b49e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

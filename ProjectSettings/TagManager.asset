@@ -10,6 +10,10 @@ TagManager:
   - Wall
   - Tube Body
   - Stair
+  - Item
+  - Axe
+  - Cloud
+  - Coin
   layers:
   - Default
   - TransparentFX
