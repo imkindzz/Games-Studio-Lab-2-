@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 7591f8a06335e8f4987db53158b0ec88
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1732278760530898332
+    second: Giant Mario (1)_0
+  - first:
+      213: 6101819283562472865
+    second: Giant Mario (1)_1
+  - first:
+      213: -5884710365560004853
+    second: Giant Mario (1)_2
+  - first:
+      213: -6916822964223026043
+    second: Giant Mario (1)_3
+  - first:
+      213: 8967562050326215453
+    second: Giant Mario (1)_4
+  - first:
+      213: 6372222243842722862
+    second: Giant Mario (1)_5
+  - first:
+      213: 4248006291607828591
+    second: Giant Mario (1)_6
+  - first:
+      213: -4174899995760067532
+    second: Giant Mario (1)_7
+  - first:
+      213: -7669830347624818622
+    second: Giant Mario (1)_8
+  - first:
+      213: -7047966908931715891
+    second: Giant Mario (1)_9
+  - first:
+      213: -8325956515105722905
+    second: Giant Mario (1)_10
+  - first:
+      213: -5649769948665019258
+    second: Giant Mario (1)_11
+  - first:
+      213: 2348808185724634543
+    second: Giant Mario (1)_12
+  - first:
+      213: -5894942165783477134
+    second: Giant Mario (1)_13
+  - first:
+      213: -1578846558525314503
+    second: Giant Mario (1)_14
+  - first:
+      213: 3499746318976103259
+    second: Giant Mario (1)_15
+  - first:
+      213: 9025278175193909714
+    second: Giant Mario (1)_16
+  - first:
+      213: -6552383510222379353
+    second: Giant Mario (1)_17
+  - first:
+      213: 1865011258546410921
+    second: Giant Mario (1)_18
+  - first:
+      213: 527373092389110765
+    second: Giant Mario (1)_19
+  - first:
+      213: 2481558724221910540
+    second: Giant Mario (1)_20
+  - first:
+      213: -4751547964573988699
+    second: Giant Mario (1)_21
+  - first:
+      213: 5609854843920715175
+    second: Giant Mario (1)_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Giant Mario (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4621a9235a5b5f7e0800000000000000
+      internalID: -1732278760530898332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a5ae504f440ea450800000000000000
+      internalID: 6101819283562472865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f9cbed91f455ea0800000000000000
+      internalID: -5884710365560004853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cd83339228200a0800000000000000
+      internalID: -6916822964223026043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_4
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1bb7fe2c2e237c70800000000000000
+      internalID: 8967562050326215453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_5
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c861a8e5eae6850800000000000000
+      internalID: 6372222243842722862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68b8ee1733f3fa30800000000000000
+      internalID: 4248006291607828591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_7
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43cf0fbc296cf06c0800000000000000
+      internalID: -4174899995760067532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_8
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 2
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 248df427fe94f8590800000000000000
+      internalID: -7669830347624818622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_9
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dccca642077903e90800000000000000
+      internalID: -7047966908931715891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_10
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed26cd89a2447c80800000000000000
+      internalID: -8325956515105722905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_11
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 0
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 684052b5a2cf791b0800000000000000
+      internalID: -5649769948665019258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_12
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa585a3b994a89020800000000000000
+      internalID: 2348808185724634543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_13
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 0
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 274010d3555f03ea0800000000000000
+      internalID: -5894942165783477134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_14
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 0
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a204c8b6fc61ae0800000000000000
+      internalID: -1578846558525314503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_15
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 0
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b533d821cb8919030800000000000000
+      internalID: 3499746318976103259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_16
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9c48faeaa304d70800000000000000
+      internalID: 9025278175193909714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_17
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 17
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a66119d9e14115a0800000000000000
+      internalID: -6552383510222379353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_18
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a553cfbbd9d1e910800000000000000
+      internalID: 1865011258546410921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_19
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de3c3fb880b915700800000000000000
+      internalID: 527373092389110765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_20
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 0
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0eb4860384407220800000000000000
+      internalID: 2481558724221910540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_21
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 0
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a8465e0d4c1f0eb0800000000000000
+      internalID: -4751547964573988699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Giant Mario (1)_22
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 3
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ad066d12453add40800000000000000
+      internalID: 5609854843920715175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Giant Mario (1)_0: -1732278760530898332
+      Giant Mario (1)_1: 6101819283562472865
+      Giant Mario (1)_10: -8325956515105722905
+      Giant Mario (1)_11: -5649769948665019258
+      Giant Mario (1)_12: 2348808185724634543
+      Giant Mario (1)_13: -5894942165783477134
+      Giant Mario (1)_14: -1578846558525314503
+      Giant Mario (1)_15: 3499746318976103259
+      Giant Mario (1)_16: 9025278175193909714
+      Giant Mario (1)_17: -6552383510222379353
+      Giant Mario (1)_18: 1865011258546410921
+      Giant Mario (1)_19: 527373092389110765
+      Giant Mario (1)_2: -5884710365560004853
+      Giant Mario (1)_20: 2481558724221910540
+      Giant Mario (1)_21: -4751547964573988699
+      Giant Mario (1)_22: 5609854843920715175
+      Giant Mario (1)_3: -6916822964223026043
+      Giant Mario (1)_4: 8967562050326215453
+      Giant Mario (1)_5: 6372222243842722862
+      Giant Mario (1)_6: 4248006291607828591
+      Giant Mario (1)_7: -4174899995760067532
+      Giant Mario (1)_8: -7669830347624818622
+      Giant Mario (1)_9: -7047966908931715891
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
