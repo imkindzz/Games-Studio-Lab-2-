@@ -8,6 +8,8 @@ TagManager:
   - Question Mark
   - Tube Head
   - Wall
+  - Tube Body
+  - Stair
   layers:
   - Default
   - TransparentFX
