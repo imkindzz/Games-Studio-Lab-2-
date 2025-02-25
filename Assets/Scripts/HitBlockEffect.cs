@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitBlockEffect : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Items = new List<GameObject>();
+    [SerializeField] private Transform ItemSpawnLocation;
 
     private List<BoxCollider2D> colldiers = new List<BoxCollider2D>();
 
@@ -15,11 +16,12 @@ public class HitBlockEffect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //checks if the colliding object is the player/mario
         if (collision.tag.Equals("Player"))
         {
             switch (gameObject.tag)
             {
-                case "QuestionMark":
+                case "Question Mark":
                     OnQuestionMark();
                     break;
                 default:
@@ -31,6 +33,11 @@ public class HitBlockEffect : MonoBehaviour
 
     private void OnQuestionMark()
     {
-        Debug.Log("Function: OnQuestionmark");
+        //Debug.Log("Function: OnQuestionmark");
+
+        int randomIndex = Random.Range(0, Items.Count);
+        GameObject item = Items[randomIndex];
+
+        Instantiate(item, ItemSpawnLocation);
     }
 }
