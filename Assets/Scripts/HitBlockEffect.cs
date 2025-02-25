@@ -7,7 +7,7 @@ public class HitBlockEffect : MonoBehaviour
     [SerializeField] private List<GameObject> Items = new List<GameObject>();
     [SerializeField] private Transform ItemSpawnLocation;
 
-    private List<BoxCollider2D> colldiers = new List<BoxCollider2D>();
+    private bool itemSpawnLocationOccupied = false;
 
     void Start()
     {
@@ -35,9 +35,19 @@ public class HitBlockEffect : MonoBehaviour
     {
         //Debug.Log("Function: OnQuestionmark");
 
+        if (!itemSpawnLocationOccupied)
+        {
+            InstantiateItem();
+        }
+    }
+
+    private void InstantiateItem()
+    {
         int randomIndex = Random.Range(0, Items.Count);
         GameObject item = Items[randomIndex];
 
         Instantiate(item, ItemSpawnLocation);
+
+        itemSpawnLocationOccupied = true;
     }
 }
