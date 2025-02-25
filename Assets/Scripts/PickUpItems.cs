@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PickUpItems : MonoBehaviour
 {
+    public int carryCapacity = 1;
+
     //collects th eitems that the player will be carrying
     private List<GameObject> items = new List<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Item"))
+        if (collision.tag.Equals("Item") && !ReachedCarryCapacity())
         {
             ItemDetails itemDetails = collision.GetComponent<ItemDetails>();
             Debug.Log("Item Detected: " + itemDetails.GetItemType());
@@ -32,5 +34,12 @@ public class PickUpItems : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+    }
+
+    public bool ReachedCarryCapacity() { return items.Count == carryCapacity; }
+
+    public bool DropItem(GameObject item)
+    {
+        return items.Remove(item);
     }
 }
