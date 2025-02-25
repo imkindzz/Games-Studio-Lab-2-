@@ -414,9 +414,10 @@ MonoBehaviour:
   - {fileID: 7515400995477877232, guid: 42992c290c85ae04d804892a6208c1af, type: 3}
   - {fileID: 634749921619915060, guid: c61a6a89e2c189542a2aaedd343e2c9f, type: 3}
   itemSpawnLocation: {fileID: 711974837}
-  onlyForOneItem: 0
+  getItemAttempts: 5
+  endSprite: {fileID: -1365000832, guid: ba5e31067d1ba164ba90a94b6ccc77c8, type: 3}
   itemTemporaryAppearance: 1
-  itemTemporaryTime: 3
+  itemTemporaryTime: 0.5
 --- !u!61 &1726186629
 BoxCollider2D:
   m_ObjectHideFlags: 0

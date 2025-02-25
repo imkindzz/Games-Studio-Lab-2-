@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HitBlockEffect : MonoBehaviour
@@ -8,7 +9,8 @@ public class HitBlockEffect : MonoBehaviour
     [SerializeField] private Transform itemSpawnLocation;
 
     //if player can only get one item from the block
-    public bool onlyForOneItem = true;
+    [SerializeField] public int getItemAttempts = 5;
+    [SerializeField] public Sprite endSprite;
 
     //whether the item temporarily appears on the scene
     public bool itemTemporaryAppearance = false;
@@ -18,8 +20,8 @@ public class HitBlockEffect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //checks if the colliding object is the player
-        if (collision.tag.Equals("Player"))
+        //checks if the colliding object is the player) and that hits could be maade
+        if (collision.tag.Equals("Player") && !IsNoMoreGetItemAttempt())
         {
             switch (gameObject.tag)
             {
@@ -37,9 +39,14 @@ public class HitBlockEffect : MonoBehaviour
     {
         //Debug.Log("Function: OnQuestionmark");
 
-        if (!IsOnlyForOneItem() && !IsItemSpawnLocationOccupied())
+        if (!IsItemSpawnLocationOccupied())
         {
             InstantiateItem();
+        }
+
+        if (IsNoMoreGetItemAttempt())
+        {
+            EndHitBlock();
         }
     }
 
@@ -57,6 +64,7 @@ public class HitBlockEffect : MonoBehaviour
             Instantiate(item, itemSpawnLocation);
         }
 
+        getItemAttempts--;
 
         Debug.Log("Item Spawned");
     }
@@ -72,20 +80,14 @@ public class HitBlockEffect : MonoBehaviour
         return false;
     }
 
-    private bool IsOnlyForOneItem()
+    private bool IsNoMoreGetItemAttempt()
     {
-        if (onlyForOneItem && !oneItemChanceUsed)
-        {
-            oneItemChanceUsed = true;
-            
-            return false; //oneItemChance is not yet used during this function
-        }
+        return getItemAttempts == 0;
+    }
 
-        if (oneItemChanceUsed)
-        {
-            return true;
-        }
-
-        return false;
+    private void EndHitBlock()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = endSprite;
     }
 }
