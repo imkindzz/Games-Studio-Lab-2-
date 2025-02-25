@@ -415,6 +415,8 @@ MonoBehaviour:
   - {fileID: 634749921619915060, guid: c61a6a89e2c189542a2aaedd343e2c9f, type: 3}
   itemSpawnLocation: {fileID: 711974837}
   onlyForOneItem: 0
+  itemTemporaryAppearance: 1
+  itemTemporaryTime: 3
 --- !u!61 &1726186629
 BoxCollider2D:
   m_ObjectHideFlags: 0

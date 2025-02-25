@@ -7,14 +7,18 @@ public class HitBlockEffect : MonoBehaviour
     [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private Transform itemSpawnLocation;
 
-    //player can only get one item from the block
+    //if player can only get one item from the block
     public bool onlyForOneItem = true;
+
+    //whether the item temporarily appears on the scene
+    public bool itemTemporaryAppearance = false;
+    public float itemTemporaryTime = 3f;
 
     private bool oneItemChanceUsed = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //checks if the colliding object is the player/mario
+        //checks if the colliding object is the player
         if (collision.tag.Equals("Player"))
         {
             switch (gameObject.tag)
@@ -44,10 +48,15 @@ public class HitBlockEffect : MonoBehaviour
         int randomIndex = Random.Range(0, items.Count);
         GameObject item = items[randomIndex];
 
-        //temporary appearance in the scene
-        Destroy(Instantiate(item, itemSpawnLocation), 3f);
+        if (itemTemporaryAppearance)
+        {
+            Destroy(Instantiate(item, itemSpawnLocation), 3f);
+        }
+        else
+        {
+            Instantiate(item, itemSpawnLocation);
+        }
 
-        //Instantiate(item, itemSpawnLocation)
 
         Debug.Log("Item Spawned");
     }
