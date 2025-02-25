@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class HitBlockEffect : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> Items = new List<GameObject>();
-    [SerializeField] private Transform ItemSpawnLocation;
+    [SerializeField] private List<GameObject> items = new List<GameObject>();
+    [SerializeField] private Transform itemSpawnLocation;
 
-    private bool itemSpawnLocationOccupied = false;
+    //player can only get one item from the block
+    public bool onlyForOneItem = true;
 
-    void Start()
-    {
-        //colldiers = gameObject.GetComponent<BoxCollider2D>();
-    }
+    private bool oneItemChanceUsed = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,7 +33,7 @@ public class HitBlockEffect : MonoBehaviour
     {
         //Debug.Log("Function: OnQuestionmark");
 
-        if (!itemSpawnLocationOccupied)
+        if (!IsOnlyForOneItem() && !IsItemSpawnLocationOccupied())
         {
             InstantiateItem();
         }
@@ -43,11 +41,42 @@ public class HitBlockEffect : MonoBehaviour
 
     private void InstantiateItem()
     {
-        int randomIndex = Random.Range(0, Items.Count);
-        GameObject item = Items[randomIndex];
+        int randomIndex = Random.Range(0, items.Count);
+        GameObject item = items[randomIndex];
 
-        Instantiate(item, ItemSpawnLocation);
+        //temporary appearance in the scene
+        Destroy(Instantiate(item, itemSpawnLocation), 3f);
 
-        itemSpawnLocationOccupied = true;
+        //Instantiate(item, itemSpawnLocation)
+
+        Debug.Log("Item Spawned");
+    }
+
+    private bool IsItemSpawnLocationOccupied()
+    {
+        Vector2 raycastOrigin = new Vector2(itemSpawnLocation.position.x, itemSpawnLocation.position.y);
+        if (Physics2D.Raycast(raycastOrigin, Vector2.up, 0.1f))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool IsOnlyForOneItem()
+    {
+        if (onlyForOneItem && !oneItemChanceUsed)
+        {
+            oneItemChanceUsed = true;
+            
+            return false; //oneItemChance is not yet used during this function
+        }
+
+        if (oneItemChanceUsed)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -409,11 +409,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c63f9e7787a2c648b3b8c2d4ce0c569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items:
-  - {fileID: 634749921619915060, guid: c61a6a89e2c189542a2aaedd343e2c9f, type: 3}
-  - {fileID: 7515400995477877232, guid: 42992c290c85ae04d804892a6208c1af, type: 3}
+  items:
   - {fileID: 33639451355388014, guid: 297fa732eb0a2d041861a0a5a13ed156, type: 3}
-  ItemSpawnLocation: {fileID: 711974837}
+  - {fileID: 7515400995477877232, guid: 42992c290c85ae04d804892a6208c1af, type: 3}
+  - {fileID: 634749921619915060, guid: c61a6a89e2c189542a2aaedd343e2c9f, type: 3}
+  itemSpawnLocation: {fileID: 711974837}
+  onlyForOneItem: 0
 --- !u!61 &1726186629
 BoxCollider2D:
   m_ObjectHideFlags: 0
