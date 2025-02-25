@@ -6,7 +6,7 @@ public class PickUpItems : MonoBehaviour
 {
     public int carryCapacity = 1;
 
-    //collects th eitems that the player will be carrying
+    //collects the items that the player will be carrying
     private List<GameObject> items = new List<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D collision)
