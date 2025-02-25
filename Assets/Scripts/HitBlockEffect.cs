@@ -9,19 +9,17 @@ public class HitBlockEffect : MonoBehaviour
     [SerializeField] private Transform itemSpawnLocation;
 
     //if player can only get one item from the block
-    [SerializeField] public int getItemAttempts = 5;
-    [SerializeField] public Sprite endSprite;
+    [SerializeField] private int getItemAttempts = 5;
+    [SerializeField] private Sprite endSprite;
 
     //whether the item temporarily appears on the scene
     public bool itemTemporaryAppearance = false;
     public float itemTemporaryTime = 3f;
 
-    private bool oneItemChanceUsed = false;
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         //checks if the colliding object is the player) and that hits could be maade
-        if (collision.tag.Equals("Player") && !IsNoMoreGetItemAttempt())
+        if (collision.tag.Equals("Player"))
         {
             switch (gameObject.tag)
             {
@@ -29,7 +27,7 @@ public class HitBlockEffect : MonoBehaviour
                     OnQuestionMark();
                     break;
                 default:
-                    Debug.Log("Unidentified tag: " + gameObject.tag);
+                    Debug.LogWarning("Unidentified tag: " + gameObject.tag);
                     break;
             }
         }
@@ -39,7 +37,7 @@ public class HitBlockEffect : MonoBehaviour
     {
         //Debug.Log("Function: OnQuestionmark");
 
-        if (!IsItemSpawnLocationOccupied())
+        if (!IsItemSpawnLocationOccupied() && !IsNoMoreGetItemAttempt())
         {
             InstantiateItem();
         }
