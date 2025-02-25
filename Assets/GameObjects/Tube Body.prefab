@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 6802117514003358071}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0004272, y: -0.00027829036, z: 0}
+  m_LocalPosition: {x: 0.999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1452743361404051585}
   m_Layer: 0
   m_Name: Tube Body
-  m_TagString: Untagged
+  m_TagString: Tube Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,5 +193,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9962215, y: 0.8125, z: 0.2}
-  m_Center: {x: 0.49811077, y: 0, z: 0}
+  m_Size: {x: 1.9962215, y: 0.69406325, z: 0.20000005}
+  m_Center: {x: 0.4981108, y: 0.0034832673, z: 0}
