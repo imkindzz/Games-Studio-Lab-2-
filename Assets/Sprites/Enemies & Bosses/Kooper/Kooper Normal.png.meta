@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 7ea409521b052cc4dab541f964b0195a
+guid: 40b1b862844c6a74fa5b9020f1703e5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6308735452238959972
-    second: Kooper Default_0
+      213: 3363269049649251556
+    second: Kooper Normal_0
   - first:
-      213: -9073600566176810099
-    second: Kooper Default_1
+      213: 1765003403812341090
+    second: Kooper Normal_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kooper Default_0
+      name: Kooper Normal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9a2263088ed278a0800000000000000
-      internalID: -6308735452238959972
+      spriteID: 4e4c86c916bbcae20800000000000000
+      internalID: 3363269049649251556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kooper Default_1
+      name: Kooper Normal_1
       rect:
         serializedVersion: 2
         x: 16
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8b7f3beb58141280800000000000000
-      internalID: -9073600566176810099
+      spriteID: 265079f8e3d8e7810800000000000000
+      internalID: 1765003403812341090
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 974175960684163428894fa218ed3f13
+    spriteID: db71d50ba1216c745ac8ac09c891459e
     internalID: 0
     vertices: []
     indices: 
@@ -155,8 +155,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kooper Default_0: -6308735452238959972
-      Kooper Default_1: -9073600566176810099
+      Kooper Normal_0: 3363269049649251556
+      Kooper Normal_1: 1765003403812341090
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
