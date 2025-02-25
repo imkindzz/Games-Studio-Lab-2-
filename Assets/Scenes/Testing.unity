@@ -416,7 +416,7 @@ MonoBehaviour:
   itemSpawnLocation: {fileID: 711974837}
   getItemAttempts: 5
   endSprite: {fileID: -1365000832, guid: ba5e31067d1ba164ba90a94b6ccc77c8, type: 3}
-  itemTemporaryAppearance: 0
+  itemTemporaryAppearance: 1
   itemTemporaryTime: 0.5
 --- !u!61 &1726186629
 BoxCollider2D:

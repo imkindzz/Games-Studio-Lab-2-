@@ -19,7 +19,7 @@ public class HitBlockEffect : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //checks if the colliding object is the player) and that hits could be maade
-        if (collision.tag.Equals("Player"))
+        if (collision.tag.Equals("Player") && !IsNoMoreGetItemAttempt())
         {
             switch (gameObject.tag)
             {
@@ -37,7 +37,7 @@ public class HitBlockEffect : MonoBehaviour
     {
         //Debug.Log("Function: OnQuestionmark");
 
-        if (!IsItemSpawnLocationOccupied() && !IsNoMoreGetItemAttempt())
+        if (!IsItemSpawnLocationOccupied())
         {
             InstantiateItem();
         }
