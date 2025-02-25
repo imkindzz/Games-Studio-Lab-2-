@@ -8,9 +8,12 @@ public class MarioController : MonoBehaviour
     public float moveSpeed;
     public float jumpHeight;
     public LayerMask floorLayer;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private bool isGrounded;
+
+    float horizontalMove = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +24,17 @@ public class MarioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            animator.SetBool("IsJumping", true);
             Jump();
         }
         Movement();
+
 
         
 
@@ -75,8 +84,8 @@ public class MarioController : MonoBehaviour
         
             // Apply upward force for the jump
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-        
-        
+
+
     }
 
     // Detect collisions with objects and check if they have the correct tag
@@ -86,6 +95,7 @@ public class MarioController : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+            animator.SetBool("IsJumping", false);
             Debug.Log("Collided with ground!");
         }
     }
