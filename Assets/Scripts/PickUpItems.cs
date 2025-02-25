@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PickUpItems : MonoBehaviour
 {
+    //collects th eitems that the player will be carrying
+    private List<GameObject> items = new List<GameObject>();
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag.Equals("Item"))
@@ -14,10 +17,13 @@ public class PickUpItems : MonoBehaviour
             switch (itemDetails.GetItemType())
             {
                 case ItemType.Axe:
+                    items.Add(collision.gameObject);
                     break;
                 case ItemType.Cloud:
+                    items.Add(collision.gameObject);
                     break;
                 case ItemType.Coin:
+                    items.Add(collision.gameObject);
                     break;
                 default:
                     Debug.LogWarning("Undetected Item Type: " + itemDetails.GetItemType());
