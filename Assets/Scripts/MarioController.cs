@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Needed for reloading the level
 
 public class MarioController : MonoBehaviour
 {
@@ -10,25 +11,25 @@ public class MarioController : MonoBehaviour
     public Animator animator;
     public AudioSource walkSound;
     public AudioSource jumpSound;
-    public AudioSource pickupSound; // NEW: Pickup Sound
+    public AudioSource pickupSound;
+    public AudioSource deathSound; // NEW: Death Sound
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isJumping;
+    private bool isDead = false; // Track if Mario is dead
 
     float horizontalMove = 0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        if (walkSound == null) Debug.LogError("Walk sound AudioSource is missing! Assign it in the Inspector.");
-        if (jumpSound == null) Debug.LogError("Jump sound AudioSource is missing! Assign it in the Inspector.");
-        if (pickupSound == null) Debug.LogError("Pickup sound AudioSource is missing! Assign it in the Inspector.");
     }
 
     void Update()
     {
+        if (isDead) return;
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -43,6 +44,8 @@ public class MarioController : MonoBehaviour
 
     void Movement()
     {
+        if (isDead) return;
+
         float moveInput = Input.GetAxis("Horizontal");
 
         if (moveInput < 0)
@@ -114,6 +117,11 @@ public class MarioController : MonoBehaviour
             isJumping = false;
             animator.SetBool("IsJumping", false);
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -124,17 +132,48 @@ public class MarioController : MonoBehaviour
         }
     }
 
-    // NEW: Handle Item Pickup
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Item")) // Make sure the item has the tag "Item"
+        if (other.gameObject.CompareTag("Item"))
         {
             if (pickupSound != null)
             {
                 pickupSound.Play();
             }
 
-            Destroy(other.gameObject); // Remove the item from the scene
+            Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("DeathZone"))
+        {
+            Die();
+        }
+    }
+
+   
+    void Die()
+    {
+        if (isDead) return; 
+
+        isDead = true;
+        animator.SetTrigger("Die");
+        StopWalkingSound();
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        if (deathSound != null)
+        {
+            deathSound.Play();
+        }
+
+        
+        StartCoroutine(RestartLevel());
+    }
+
+    IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
