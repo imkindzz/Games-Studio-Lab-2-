@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class MarioController : MonoBehaviour
 {
-    // Player variables
     public float moveSpeed;
     public float jumpHeight;
     public LayerMask floorLayer;
     public Animator animator;
+    public AudioSource walkSound;
+    public AudioSource jumpSound;
+    public AudioSource pickupSound; // NEW: Pickup Sound
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool isJumping;
 
     float horizontalMove = 0f;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (walkSound == null) Debug.LogError("Walk sound AudioSource is missing! Assign it in the Inspector.");
+        if (jumpSound == null) Debug.LogError("Jump sound AudioSource is missing! Assign it in the Inspector.");
+        if (pickupSound == null) Debug.LogError("Pickup sound AudioSource is missing! Assign it in the Inspector.");
     }
 
-    // Update is called once per frame
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
-
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -33,81 +37,104 @@ public class MarioController : MonoBehaviour
             animator.SetBool("IsJumping", true);
             Jump();
         }
+
         Movement();
-
-
-        
-
     }
 
     void Movement()
     {
         float moveInput = Input.GetAxis("Horizontal");
 
-        // Flip the sprite when moving left or right
         if (moveInput < 0)
         {
-            // Flip the sprite 
-            transform.localScale = new Vector3(-6.210505f, 6.210505f, 6.210505f); 
+            transform.localScale = new Vector3(-6.210505f, 6.210505f, 6.210505f);
         }
         else if (moveInput > 0)
         {
-            // Flip back
-            transform.localScale = new Vector3(6.210505f, 6.210505f, 6.210505f); 
+            transform.localScale = new Vector3(6.210505f, 6.210505f, 6.210505f);
         }
 
-
-        // Target velocity should be the maxSpeed or the direction the player is moving.
         float targetVelocityX = moveSpeed * moveInput;
 
-        // deccelerate if no input
         if (moveInput == 0)
         {
             rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, moveSpeed), rb.velocity.y);
+            StopWalkingSound();
         }
         else
         {
-            // accelerate 
             float newVelocityX = Mathf.MoveTowards(rb.velocity.x, targetVelocityX, moveSpeed);
             rb.velocity = new Vector2(newVelocityX, rb.velocity.y);
+
+            if (isGrounded && !isJumping)
+            {
+                PlayWalkingSound();
+            }
+            else
+            {
+                StopWalkingSound();
+            }
         }
-
-        
-        
-
-        //Debug.Log("X Velocity: " + rb.velocity.x + "|  Y Velocity: " + rb.velocity.y);
     }
 
     void Jump()
     {
-        
-        
-            // Apply upward force for the jump
-            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+        StopWalkingSound();
 
+        if (jumpSound != null)
+        {
+            jumpSound.Play();
+        }
 
+        rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+        isJumping = true;
     }
 
-    // Detect collisions with objects and check if they have the correct tag
-    void OnCollisionEnter2D(Collision2D collision)
+    void PlayWalkingSound()
     {
-        // Check if the object collided with has the "Ground" tag
-        if (collision.gameObject.CompareTag("Floor"))
+        if (!walkSound.isPlaying)
         {
-            isGrounded = true;
-            animator.SetBool("IsJumping", false);
-            Debug.Log("Collided with ground!");
+            walkSound.Play();
         }
     }
 
-    // Optionally, handle when the player leaves the ground
+    void StopWalkingSound()
+    {
+        if (walkSound.isPlaying)
+        {
+            walkSound.Stop();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = true;
+            isJumping = false;
+            animator.SetBool("IsJumping", false);
+        }
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = false;
-            Debug.Log("Left the ground!");
         }
     }
 
+    // NEW: Handle Item Pickup
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Item")) // Make sure the item has the tag "Item"
+        {
+            if (pickupSound != null)
+            {
+                pickupSound.Play();
+            }
+
+            Destroy(other.gameObject); // Remove the item from the scene
+        }
+    }
 }
