@@ -14,6 +14,8 @@ TagManager:
   - Axe
   - Cloud
   - Coin
+  - Entrance
+  - Exit
   layers:
   - Default
   - TransparentFX

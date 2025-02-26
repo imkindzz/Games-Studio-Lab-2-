@@ -148,12 +148,27 @@ public class MarioController : MonoBehaviour
         {
             Die();
         }
+
+        // NEW: Handle entrance to secret area
+        if (other.gameObject.CompareTag("Entrance"))
+        {
+            // Load the secret scene
+            SceneManager.LoadScene("Secret");
+
+        }
+
+        // NEW: Handle exit from secret area
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            // Load the main scene
+            SceneManager.LoadScene("Main");
+
+        }
     }
 
-   
     void Die()
     {
-        if (isDead) return; 
+        if (isDead) return;
 
         isDead = true;
         animator.SetTrigger("Die");
@@ -167,7 +182,6 @@ public class MarioController : MonoBehaviour
             deathSound.Play();
         }
 
-        
         StartCoroutine(RestartLevel());
     }
 
