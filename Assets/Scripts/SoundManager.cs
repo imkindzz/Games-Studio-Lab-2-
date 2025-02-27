@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource pickupSound;
     public AudioSource deathSound;
     public AudioSource stompSound;
+    public AudioSource stageClearSound;
 
     void Awake()
     {
@@ -55,5 +56,10 @@ public class SoundManager : MonoBehaviour
     public void PlayStompSound()
     {
         stompSound.Play();
+    }
+
+    public void PlayStageClearSound()
+    {
+        stageClearSound.Play();
     }
 }

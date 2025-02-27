@@ -133,6 +133,7 @@ public class MarioController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Entrance"))
         {
+            SoundManager.instance.PlayStageClearSound();
             SceneManager.LoadScene("Secret");
         }
 
