@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: f36b499e94e0edf4a9da941674c01421
+guid: dd4de4e6725215a488622c4ea1ba6a94
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3282400519197024600
-    second: flagpoole_0
-  - first:
-      213: -314785772747191462
-    second: flagpoole_1
-  - first:
-      213: -4055638660476008707
-    second: flagpoole_2
-  - first:
-      213: 1791373090001252759
-    second: flagpoole_3
-  - first:
-      213: -8039436491990258471
-    second: flagpoole_4
+      213: 4315506946141470425
+    second: Mushroom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flagpoole_0
+      name: Mushroom_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 3
-        width: 27
-        height: 170
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,92 +114,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 851eb4d91ed6d8d20800000000000000
-      internalID: 3282400519197024600
+      spriteID: 9de3e76f3b2c3eb30800000000000000
+      internalID: 4315506946141470425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flagpoole_1
+      name: Mushroom_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 3
-        width: 28
-        height: 170
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a5b8e0be108a1abf0800000000000000
-      internalID: -314785772747191462
+      spriteID: 560c14c41ed5d714a8e6d64b049901d8
+      internalID: 681354754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flagpoole_2
+      name: Mushroom_2
       rect:
         serializedVersion: 2
-        x: 65
-        y: 3
-        width: 28
-        height: 170
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df68cf0402a77b7c0800000000000000
-      internalID: -4055638660476008707
+      spriteID: 146dd28f5a2a0164b92af9cb34258ab2
+      internalID: 1060134004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flagpoole_3
+      name: Mushroom_3
       rect:
         serializedVersion: 2
-        x: 99
-        y: 3
-        width: 28
-        height: 170
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 791f7b1955c3cd810800000000000000
-      internalID: 1791373090001252759
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flagpoole_4
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 3
-        width: 28
-        height: 170
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9dcab94fa1f2e6090800000000000000
-      internalID: -8039436491990258471
+      spriteID: 3c942d12e67f42d4ba3e316c86f69962
+      internalID: 723399854
       vertices: []
       indices: 
       edges: []
@@ -219,7 +186,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 10e542c0ca045a54982e87c9c5e95ef1
     internalID: 0
     vertices: []
     indices: 
@@ -227,11 +194,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      flagpoole_0: 3282400519197024600
-      flagpoole_1: -314785772747191462
-      flagpoole_2: -4055638660476008707
-      flagpoole_3: 1791373090001252759
-      flagpoole_4: -8039436491990258471
+      Mushroom_0: 4315506946141470425
+      Mushroom_1: 681354754
+      Mushroom_2: 1060134004
+      Mushroom_3: 723399854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
