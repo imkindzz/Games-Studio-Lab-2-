@@ -823,6 +823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flagpole
       objectReference: {fileID: 0}
+    - target: {fileID: 8419665915784715695, guid: 67691f0ce6e72ae43b9aac63b56c320c, type: 3}
+      propertyPath: m_TagString
+      value: Entrance
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

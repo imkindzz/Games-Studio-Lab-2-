@@ -31,7 +31,7 @@ public class MarioController : MonoBehaviour
     {
         if (isDead) return;
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -166,12 +166,12 @@ public class MarioController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Entrance"))
         {
-            SceneManager.LoadScene("Secret");
+            rb.position = new Vector2(50f, -40f);
         }
 
         if (other.gameObject.CompareTag("Exit"))
         {
-            SceneManager.LoadScene("Main");
+            rb.position = new Vector2(152f, -0.3496383f);
         }
     }
 
