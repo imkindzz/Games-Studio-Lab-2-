@@ -51,7 +51,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlayDeathSound()
     {
+        StopBackgroundMusic();
         deathSound.Play();
+        StartCoroutine(ResumeMusicAfterDelay(deathSound.clip.length));
     }
 
     public void PlayStompSound()
@@ -61,12 +63,17 @@ public class SoundManager : MonoBehaviour
 
     public void PlayClearStageSound()
     {
+        StopBackgroundMusic();
+        clearStageSound.Play();
+        StartCoroutine(ResumeMusicAfterDelay(clearStageSound.clip.length));
+    }
+
+    public void StopBackgroundMusic()
+    {
         if (BGMusic.isPlaying)
         {
             BGMusic.Pause();
         }
-        clearStageSound.Play();
-        StartCoroutine(ResumeMusicAfterDelay(clearStageSound.clip.length));
     }
 
     private System.Collections.IEnumerator ResumeMusicAfterDelay(float delay)
