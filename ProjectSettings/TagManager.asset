@@ -17,6 +17,7 @@ TagManager:
   - Entrance
   - Exit
   - Enemy
+  - DeathZone
   layers:
   - Default
   - TransparentFX
