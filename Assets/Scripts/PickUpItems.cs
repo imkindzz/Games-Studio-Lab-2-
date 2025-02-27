@@ -11,8 +11,7 @@ public class PickUpItems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //makes sure that the gameobject item has the 'Item' tag
-        if (collision.tag.Equals("Item") && !ReachedCarryCapacity())
+        if (collision.CompareTag("Item") && !ReachedCarryCapacity())
         {
             ItemDetails itemDetails = collision.GetComponent<ItemDetails>();
             Debug.Log("Item Detected: " + itemDetails.GetItemType());
@@ -36,6 +35,7 @@ public class PickUpItems : MonoBehaviour
                     break;
             }
 
+            Debug.Log("items.Count: " + items.Count);
             Destroy(collision.gameObject);
         }
     }

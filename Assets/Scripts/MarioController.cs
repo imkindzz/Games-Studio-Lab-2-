@@ -156,7 +156,7 @@ public class MarioController : MonoBehaviour
                 pickupSound.Play();
             }
 
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject); //already destroys the item in the PickUpItems.cs
         }
 
         if (other.gameObject.CompareTag("DeathZone"))
