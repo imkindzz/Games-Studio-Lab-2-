@@ -13,6 +13,7 @@ public class MarioController : MonoBehaviour
     public AudioSource jumpSound;
     public AudioSource pickupSound;
     public AudioSource deathSound; // NEW: Death Sound
+    public AudioSource stompSound; // NEW: Stomp Sound
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -120,7 +121,21 @@ public class MarioController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Die();
+            ContactPoint2D[] contacts = collision.contacts;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                if (contact.normal.y > 0.5f) // Mario lands on top of Goomba
+                {
+                    if (stompSound != null) // Play stomp sound
+                    {
+                        stompSound.Play();
+                    }
+                    Destroy(collision.gameObject); // Remove Goomba
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Mario bounces
+                    return;
+                }
+            }
+            Die(); // Mario dies only if not from the top
         }
     }
 
@@ -148,12 +163,21 @@ public class MarioController : MonoBehaviour
         {
             Die();
         }
+
+        if (other.gameObject.CompareTag("Entrance"))
+        {
+            SceneManager.LoadScene("Secret");
+        }
+
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            SceneManager.LoadScene("Main");
+        }
     }
 
-   
     void Die()
     {
-        if (isDead) return; 
+        if (isDead) return;
 
         isDead = true;
         animator.SetTrigger("Die");
@@ -167,7 +191,6 @@ public class MarioController : MonoBehaviour
             deathSound.Play();
         }
 
-        
         StartCoroutine(RestartLevel());
     }
 
