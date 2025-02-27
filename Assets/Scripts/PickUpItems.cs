@@ -11,6 +11,7 @@ public class PickUpItems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //makes sure that the gameobject item has the 'Item' tag
         if (collision.tag.Equals("Item") && !ReachedCarryCapacity())
         {
             ItemDetails itemDetails = collision.GetComponent<ItemDetails>();
@@ -25,6 +26,9 @@ public class PickUpItems : MonoBehaviour
                     items.Add(collision.gameObject);
                     break;
                 case ItemType.Coin:
+                    items.Add(collision.gameObject);
+                    break;
+                case ItemType.Mushroom:
                     items.Add(collision.gameObject);
                     break;
                 default:
