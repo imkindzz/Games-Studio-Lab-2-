@@ -120,6 +120,12 @@ public class MarioController : MonoBehaviour
             animator.SetBool("IsJumping", false);
         }
 
+        // Big mario can destroy Brick Blocks and hard blocks by running into them or jumping on them
+        if (collision.gameObject.CompareTag("Wall") && isPoweredUp)
+        {
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             ContactPoint2D[] contacts = collision.contacts;
@@ -202,8 +208,6 @@ public class MarioController : MonoBehaviour
 
         StartCoroutine(RestartLevel());
     }
-
-    public bool IsStatePoweredUp() {  return isPoweredUp; }
 
     public void ReceivePowerUp()
     {
