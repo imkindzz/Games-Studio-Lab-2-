@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUpItems : MonoBehaviour
 {
+    public MarioController marioController;
     public int carryCapacity = 1;
 
     //collects the items that the player will be carrying
@@ -28,7 +29,7 @@ public class PickUpItems : MonoBehaviour
                     items.Add(collision.gameObject);
                     break;
                 case ItemType.Mushroom:
-                    items.Add(collision.gameObject);
+                    marioController.ReceivePowerUp();
                     break;
                 default:
                     Debug.LogWarning("Undetected Item Type: " + itemDetails.GetItemType());

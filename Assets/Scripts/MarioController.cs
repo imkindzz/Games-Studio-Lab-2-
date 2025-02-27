@@ -19,6 +19,7 @@ public class MarioController : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool isDead = false; // Track if Mario is dead
+    private bool isPoweredUp = false;
 
     float horizontalMove = 0f;
 
@@ -135,7 +136,15 @@ public class MarioController : MonoBehaviour
                     return;
                 }
             }
-            Die(); // Mario dies only if not from the top
+
+            if (isPoweredUp)
+            {
+                LosePowerUp();
+            }
+            else
+            {
+                Die(); // Mario dies only if not from the top
+            }
         }
     }
 
@@ -192,6 +201,27 @@ public class MarioController : MonoBehaviour
         }
 
         StartCoroutine(RestartLevel());
+    }
+
+    public bool IsStatePoweredUp() {  return isPoweredUp; }
+
+    public void ReceivePowerUp()
+    {
+        isPoweredUp = true;
+
+        //temporary in place for the big mario
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = Color.green;
+    }
+
+    private void LosePowerUp()
+    {
+        isPoweredUp = false;
+
+        //temporary in place for the big mario
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = Color.white;
+
     }
 
     IEnumerator RestartLevel()
