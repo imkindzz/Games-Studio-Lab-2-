@@ -1,103 +1,202 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Needed for reloading the level
 
 public class MarioController : MonoBehaviour
 {
-    // Player variables
     public float moveSpeed;
     public float jumpHeight;
     public LayerMask floorLayer;
+    public Animator animator;
+    public AudioSource walkSound;
+    public AudioSource jumpSound;
+    public AudioSource pickupSound;
+    public AudioSource deathSound; // NEW: Death Sound
+    public AudioSource stompSound; // NEW: Stomp Sound
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool isJumping;
+    private bool isDead = false; // Track if Mario is dead
 
-    // Start is called before the first frame update
+    float horizontalMove = 0f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
+
+        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            animator.SetBool("IsJumping", true);
             Jump();
         }
+
         Movement();
-
-        
-
     }
 
     void Movement()
     {
+        if (isDead) return;
+
         float moveInput = Input.GetAxis("Horizontal");
 
-        // Flip the sprite when moving left or right
         if (moveInput < 0)
         {
-            // Flip the sprite 
-            transform.localScale = new Vector3(-6.210505f, 6.210505f, 6.210505f); 
+            transform.localScale = new Vector3(-6.210505f, 6.210505f, 6.210505f);
         }
         else if (moveInput > 0)
         {
-            // Flip back
-            transform.localScale = new Vector3(6.210505f, 6.210505f, 6.210505f); 
+            transform.localScale = new Vector3(6.210505f, 6.210505f, 6.210505f);
         }
 
-
-        // Target velocity should be the maxSpeed or the direction the player is moving.
         float targetVelocityX = moveSpeed * moveInput;
 
-        // deccelerate if no input
         if (moveInput == 0)
         {
             rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, moveSpeed), rb.velocity.y);
+            StopWalkingSound();
         }
         else
         {
-            // accelerate 
             float newVelocityX = Mathf.MoveTowards(rb.velocity.x, targetVelocityX, moveSpeed);
             rb.velocity = new Vector2(newVelocityX, rb.velocity.y);
+
+            if (isGrounded && !isJumping)
+            {
+                PlayWalkingSound();
+            }
+            else
+            {
+                StopWalkingSound();
+            }
         }
-
-        
-        
-
-        Debug.Log("X Velocity: " + rb.velocity.x + "|  Y Velocity: " + rb.velocity.y);
     }
 
     void Jump()
     {
-        
-        
-            // Apply upward force for the jump
-            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-        
-        
+        StopWalkingSound();
+
+        if (jumpSound != null)
+        {
+            jumpSound.Play();
+        }
+
+        rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+        isJumping = true;
     }
 
-    // Detect collisions with objects and check if they have the correct tag
-    void OnCollisionEnter2D(Collision2D collision)
+    void PlayWalkingSound()
     {
-        // Check if the object collided with has the "Ground" tag
-        if (collision.gameObject.CompareTag("Floor"))
+        if (!walkSound.isPlaying)
         {
-            isGrounded = true;
-            Debug.Log("Collided with ground!");
+            walkSound.Play();
         }
     }
 
-    // Optionally, handle when the player leaves the ground
+    void StopWalkingSound()
+    {
+        if (walkSound.isPlaying)
+        {
+            walkSound.Stop();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isGrounded = true;
+            isJumping = false;
+            animator.SetBool("IsJumping", false);
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            ContactPoint2D[] contacts = collision.contacts;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                if (contact.normal.y > 0.5f) // Mario lands on top of Goomba
+                {
+                    if (stompSound != null) // Play stomp sound
+                    {
+                        stompSound.Play();
+                    }
+                    Destroy(collision.gameObject); // Remove Goomba
+                    rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Mario bounces
+                    return;
+                }
+            }
+            Die(); // Mario dies only if not from the top
+        }
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = false;
-            Debug.Log("Left the ground!");
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Item"))
+        {
+            if (pickupSound != null)
+            {
+                pickupSound.Play();
+            }
+
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("DeathZone"))
+        {
+            Die();
+        }
+
+        if (other.gameObject.CompareTag("Entrance"))
+        {
+            SceneManager.LoadScene("Secret");
+        }
+
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            SceneManager.LoadScene("Main");
+        }
+    }
+
+    void Die()
+    {
+        if (isDead) return;
+
+        isDead = true;
+        animator.SetTrigger("Die");
+        StopWalkingSound();
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+        if (deathSound != null)
+        {
+            deathSound.Play();
+        }
+
+        StartCoroutine(RestartLevel());
+    }
+
+    IEnumerator RestartLevel()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

@@ -5,6 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - Question Mark
+  - Tube Head
+  - Wall
+  - Tube Body
+  - Stair
+  - Item
+  - Axe
+  - Cloud
+  - Coin
+  - Entrance
+  - Exit
+  - Enemy
+  - DeathZone
   layers:
   - Default
   - TransparentFX
