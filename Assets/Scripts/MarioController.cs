@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Needed for reloading the level
 
@@ -9,11 +8,6 @@ public class MarioController : MonoBehaviour
     public float jumpHeight;
     public LayerMask floorLayer;
     public Animator animator;
-    public AudioSource walkSound;
-    public AudioSource jumpSound;
-    public AudioSource pickupSound;
-    public AudioSource deathSound; // NEW: Death Sound
-    public AudioSource stompSound; // NEW: Stomp Sound
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -64,7 +58,7 @@ public class MarioController : MonoBehaviour
         if (moveInput == 0)
         {
             rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, moveSpeed), rb.velocity.y);
-            StopWalkingSound();
+            SoundManager.instance.StopWalkSound();
         }
         else
         {
@@ -73,42 +67,22 @@ public class MarioController : MonoBehaviour
 
             if (isGrounded && !isJumping)
             {
-                PlayWalkingSound();
+                SoundManager.instance.PlayWalkSound();
             }
             else
             {
-                StopWalkingSound();
+                SoundManager.instance.StopWalkSound();
             }
         }
     }
 
     void Jump()
     {
-        StopWalkingSound();
-
-        if (jumpSound != null)
-        {
-            jumpSound.Play();
-        }
+        SoundManager.instance.StopWalkSound();
+        SoundManager.instance.PlayJumpSound();
 
         rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
         isJumping = true;
-    }
-
-    void PlayWalkingSound()
-    {
-        if (!walkSound.isPlaying)
-        {
-            walkSound.Play();
-        }
-    }
-
-    void StopWalkingSound()
-    {
-        if (walkSound.isPlaying)
-        {
-            walkSound.Stop();
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -133,10 +107,7 @@ public class MarioController : MonoBehaviour
             {
                 if (contact.normal.y > 0.5f) // Mario lands on top of Goomba
                 {
-                    if (stompSound != null) // Play stomp sound
-                    {
-                        stompSound.Play();
-                    }
+                    SoundManager.instance.PlayStompSound();
                     Destroy(collision.gameObject); // Remove Goomba
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Mario bounces
                     return;
@@ -166,12 +137,8 @@ public class MarioController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Item"))
         {
-            if (pickupSound != null)
-            {
-                pickupSound.Play();
-            }
-
-            //Destroy(other.gameObject); //already destroys the item in the PickUpItems.cs
+            SoundManager.instance.PlayPickupSound();
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("DeathZone"))
@@ -181,6 +148,7 @@ public class MarioController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Entrance"))
         {
+            SoundManager.instance.PlayClearStageSound();
             SceneManager.LoadScene("Secret");
         }
 
@@ -196,15 +164,12 @@ public class MarioController : MonoBehaviour
 
         isDead = true;
         animator.SetTrigger("Die");
-        StopWalkingSound();
+        SoundManager.instance.StopWalkSound();
+        SoundManager.instance.PlayDeathSound();
+
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-        if (deathSound != null)
-        {
-            deathSound.Play();
-        }
 
         StartCoroutine(RestartLevel());
     }

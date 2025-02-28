@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1027864182247219301}
   - component: {fileID: 7485946073861425894}
   - component: {fileID: 3406405682073207854}
-  - component: {fileID: 3088506961800594139}
-  - component: {fileID: 2523945162636580548}
+  - component: {fileID: 8430777634333295308}
+  - component: {fileID: 6152355241127748684}
+  - component: {fileID: -5897664066520057988}
   m_Layer: 0
   m_Name: Goomba
   m_TagString: Enemy
@@ -111,7 +112,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &3088506961800594139
+--- !u!50 &8430777634333295308
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -137,8 +138,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &2523945162636580548
+  m_Constraints: 4
+--- !u!61 &6152355241127748684
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
