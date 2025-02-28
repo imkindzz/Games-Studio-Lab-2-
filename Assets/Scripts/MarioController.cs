@@ -180,7 +180,7 @@ public class MarioController : MonoBehaviour
 
         //temporary in place for the big mario
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.green;
+        animator.SetBool("IsSuperMario", true);
     }
 
     private void LosePowerUp()
@@ -189,7 +189,7 @@ public class MarioController : MonoBehaviour
 
         //temporary in place for the big mario
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.white;
+        animator.SetBool("IsSuperMario", true);
 
     }
 

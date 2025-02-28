@@ -527,11 +527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7616471339590839753, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7616471339590839753, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 7616471339590839753, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_LocalPosition.z
@@ -568,6 +568,10 @@ PrefabInstance:
     - target: {fileID: 7620373098780378915, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956294959878472711, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8250641048590229529, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: marioController
