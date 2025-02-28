@@ -8,6 +8,7 @@ public class MarioController : MonoBehaviour
     public float jumpHeight;
     public LayerMask floorLayer;
     public Animator animator;
+    public Sprite EndStateSprite;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -163,7 +164,11 @@ public class MarioController : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        animator.SetTrigger("Die");
+
+        //animator.SetTrigger("Die");
+        animator.enabled = false;
+        GetComponent<SpriteRenderer>().sprite = EndStateSprite;
+
         SoundManager.instance.StopWalkSound();
         SoundManager.instance.PlayDeathSound();
 

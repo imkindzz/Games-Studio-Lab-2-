@@ -573,6 +573,10 @@ PrefabInstance:
       propertyPath: marioController
       value: 
       objectReference: {fileID: 286647151}
+    - target: {fileID: 9012438569193384389, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
+      propertyPath: EndStateSprite
+      value: 
+      objectReference: {fileID: 5563911940719636106, guid: 9b30973288fe3b345bd9d20583106b55, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
