@@ -554,25 +554,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1207013450354217483, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374846555754951387, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3203058862507517817, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_Name
       value: Mario
-      objectReference: {fileID: 0}
-    - target: {fileID: 3696183782953747593, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572785854381649243, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7616471339590839753, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_LocalPosition.x
