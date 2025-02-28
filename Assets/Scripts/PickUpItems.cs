@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUpItems : MonoBehaviour
 {
+    public MarioController marioController;
     public int carryCapacity = 1;
 
     //collects the items that the player will be carrying
@@ -11,7 +12,7 @@ public class PickUpItems : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag.Equals("Item") && !ReachedCarryCapacity())
+        if (collision.CompareTag("Item") && !ReachedCarryCapacity())
         {
             ItemDetails itemDetails = collision.GetComponent<ItemDetails>();
             Debug.Log("Item Detected: " + itemDetails.GetItemType());
@@ -27,11 +28,15 @@ public class PickUpItems : MonoBehaviour
                 case ItemType.Coin:
                     items.Add(collision.gameObject);
                     break;
+                case ItemType.Mushroom:
+                    marioController.ReceivePowerUp();
+                    break;
                 default:
                     Debug.LogWarning("Undetected Item Type: " + itemDetails.GetItemType());
                     break;
             }
 
+            Debug.Log("items.Count: " + items.Count);
             Destroy(collision.gameObject);
         }
     }
