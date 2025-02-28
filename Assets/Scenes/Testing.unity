@@ -336,7 +336,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3568237184718433358, guid: 4721df5fb1cc8b041a8db8763bbd16b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3568237184718433358, guid: 4721df5fb1cc8b041a8db8763bbd16b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -569,6 +569,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8250641048590229529, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
+      propertyPath: marioController
+      value: 
+      objectReference: {fileID: 286647151}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1378,7 +1382,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3568237184718433358, guid: 4721df5fb1cc8b041a8db8763bbd16b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.35
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 3568237184718433358, guid: 4721df5fb1cc8b041a8db8763bbd16b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1731,3 +1735,5 @@ SceneRoots:
   - {fileID: 5996914028910599984}
   - {fileID: 927531878}
   - {fileID: 1914490244}
+  - {fileID: 8233748872528285594}
+  - {fileID: 1987502039}
