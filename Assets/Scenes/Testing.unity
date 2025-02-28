@@ -258,17 +258,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &286647151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9012438569193384389, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-  m_PrefabInstance: {fileID: 1392259940}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705b10407d72baa47bb7d8dfa74bc705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &359307445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,25 +494,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1207013450354217483, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374846555754951387, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3203058862507517817, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_Name
       value: Mario
-      objectReference: {fileID: 0}
-    - target: {fileID: 3696183782953747593, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572785854381649243, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7616471339590839753, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
       propertyPath: m_LocalPosition.x
@@ -565,18 +538,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7620373098780378915, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250641048590229529, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: marioController
-      value: 
-      objectReference: {fileID: 286647151}
-    - target: {fileID: 9012438569193384389, guid: cc89edbc402b6784faf5bc5790679635, type: 3}
-      propertyPath: EndStateSprite
-      value: 
-      objectReference: {fileID: 5563911940719636106, guid: 9b30973288fe3b345bd9d20583106b55, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
