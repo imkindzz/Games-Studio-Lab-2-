@@ -191,7 +191,7 @@ public class MarioController : MonoBehaviour
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         animator.SetBool("IsSuperMario", true);
 
-    }
+    }   
 
     IEnumerator RestartLevel()
     {
