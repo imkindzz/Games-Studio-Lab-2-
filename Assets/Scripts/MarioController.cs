@@ -87,33 +87,40 @@ public class MarioController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        // Allow Mario to jump from different solid objects
+        if (collision.gameObject.CompareTag("Floor") || 
+            collision.gameObject.CompareTag("Wall") || 
+            collision.gameObject.CompareTag("Question Mark") || 
+            collision.gameObject.CompareTag("Stair") || 
+            collision.gameObject.CompareTag("Tube Head"))
         {
             isGrounded = true;
             isJumping = false;
             animator.SetBool("IsJumping", false);
         }
 
-        // Big mario can destroy Brick Blocks and hard blocks by running into them or jumping on them
+        // Big Mario can break certain objects when powered up
         if (collision.gameObject.CompareTag("Wall") && isPoweredUp)
         {
             Destroy(collision.gameObject);
         }
 
+        // Handle enemy collision
         if (collision.gameObject.CompareTag("Enemy"))
         {
             ContactPoint2D[] contacts = collision.contacts;
             foreach (ContactPoint2D contact in contacts)
             {
-                if (contact.normal.y > 0.5f) // Mario lands on top of Goomba
+                if (contact.normal.y > 0.5f) // Mario lands on top of an enemy
                 {
                     SoundManager.instance.PlayStompSound();
-                    Destroy(collision.gameObject); // Remove Goomba
+                    Destroy(collision.gameObject); // Remove enemy
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Mario bounces
                     return;
                 }
             }
 
+            // If Mario is powered up, he loses power instead of dying
             if (isPoweredUp)
             {
                 LosePowerUp();
@@ -127,7 +134,12 @@ public class MarioController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        // Ensure Mario isn't considered grounded when leaving a solid object
+        if (collision.gameObject.CompareTag("Floor") || 
+            collision.gameObject.CompareTag("Wall") || 
+            collision.gameObject.CompareTag("Question Mark") || 
+            collision.gameObject.CompareTag("Stair") || 
+            collision.gameObject.CompareTag("Tube Head"))
         {
             isGrounded = false;
         }
