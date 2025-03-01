@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Needed for reloading the level
 
 public class GoombaMovement : MonoBehaviour
 {
@@ -31,12 +30,16 @@ public class GoombaMovement : MonoBehaviour
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
-    // Flip direction when colliding with a wall or Mario
+    // Flip direction when colliding with a wall, Mario, or another Goomba
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor")) return; // Keep moving when touching the floor
-        if (collision.gameObject.CompareTag("Enemy")) return; // Avoid interaction with other enemies
-
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Flip direction when colliding with another Goomba
+            Flip();
+            return;
+        }
         // Flip direction when colliding with walls or Mario
         Flip();
     }
