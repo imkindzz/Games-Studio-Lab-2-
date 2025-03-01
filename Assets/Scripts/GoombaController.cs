@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement; // Needed for reloading the level
 
 public class GoombaMovement : MonoBehaviour
 {
-    public float moveSpeed = 1f; // Goomba movement speed
+    public float moveSpeed = 2f; // Goomba movement speed
     private Rigidbody2D rb;
     private bool movingRight = false; // Initial direction to the left
 
