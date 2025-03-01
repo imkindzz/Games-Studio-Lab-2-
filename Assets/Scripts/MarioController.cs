@@ -15,6 +15,7 @@ public class MarioController : MonoBehaviour
     private bool isJumping;
     private bool isDead = false; // Track if Mario is dead
     private bool isPoweredUp = false;
+    private float moveInput;
 
     float horizontalMove = 0f;
 
@@ -36,6 +37,14 @@ public class MarioController : MonoBehaviour
             Jump();
         }
 
+        
+        moveInput = Input.GetAxis("Horizontal");
+
+        
+    }
+
+    void FixedUpdate()
+    {
         Movement();
     }
 
@@ -43,15 +52,15 @@ public class MarioController : MonoBehaviour
     {
         if (isDead) return;
 
-        float moveInput = Input.GetAxis("Horizontal");
+        
 
         if (moveInput < 0)
         {
-            transform.localScale = new Vector3(-6.210505f, 6.210505f, 6.210505f);
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else if (moveInput > 0)
         {
-            transform.localScale = new Vector3(6.210505f, 6.210505f, 6.210505f);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
         float targetVelocityX = moveSpeed * moveInput;
@@ -75,6 +84,14 @@ public class MarioController : MonoBehaviour
                 SoundManager.instance.StopWalkSound();
             }
         }
+
+        if (Mathf.Abs(moveInput) < 0.1f && Mathf.Abs(rb.velocity.x) < 0.1f)
+        {
+            
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        Debug.Log($"Velocity: {rb.velocity.x}, Input: {moveInput}");
     }
 
     void Jump()
