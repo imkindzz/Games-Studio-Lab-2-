@@ -162,12 +162,12 @@ public class MarioController : MonoBehaviour
         if (other.gameObject.CompareTag("Entrance"))
         {
             SoundManager.instance.PlayClearStageSound();
-            SceneManager.LoadScene("Secret");
+            rb.transform.position = new Vector2(50.68497f, -40.18793f);
         }
 
         if (other.gameObject.CompareTag("Exit"))
         {
-            SceneManager.LoadScene("Main");
+            rb.transform.position = new Vector2(153f, -0.5f);
         }
     }
 
