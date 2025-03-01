@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Needed for reloading the level
 
@@ -9,16 +8,13 @@ public class MarioController : MonoBehaviour
     public float jumpHeight;
     public LayerMask floorLayer;
     public Animator animator;
-    public AudioSource walkSound;
-    public AudioSource jumpSound;
-    public AudioSource pickupSound;
-    public AudioSource deathSound; // NEW: Death Sound
-    public AudioSource stompSound; // NEW: Stomp Sound
+    public GameObject DeadMarioObject;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isJumping;
     private bool isDead = false; // Track if Mario is dead
+    private bool isPoweredUp = false;
 
     float horizontalMove = 0f;
 
@@ -31,7 +27,7 @@ public class MarioController : MonoBehaviour
     {
         if (isDead) return;
 
-        horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -63,7 +59,7 @@ public class MarioController : MonoBehaviour
         if (moveInput == 0)
         {
             rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0, moveSpeed), rb.velocity.y);
-            StopWalkingSound();
+            SoundManager.instance.StopWalkSound();
         }
         else
         {
@@ -72,76 +68,79 @@ public class MarioController : MonoBehaviour
 
             if (isGrounded && !isJumping)
             {
-                PlayWalkingSound();
+                SoundManager.instance.PlayWalkSound();
             }
             else
             {
-                StopWalkingSound();
+                SoundManager.instance.StopWalkSound();
             }
         }
     }
 
     void Jump()
     {
-        StopWalkingSound();
-
-        if (jumpSound != null)
-        {
-            jumpSound.Play();
-        }
+        SoundManager.instance.StopWalkSound();
+        SoundManager.instance.PlayJumpSound();
 
         rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
         isJumping = true;
     }
 
-    void PlayWalkingSound()
-    {
-        if (!walkSound.isPlaying)
-        {
-            walkSound.Play();
-        }
-    }
-
-    void StopWalkingSound()
-    {
-        if (walkSound.isPlaying)
-        {
-            walkSound.Stop();
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        // Allow Mario to jump from different solid objects
+        if (collision.gameObject.CompareTag("Floor") || 
+            collision.gameObject.CompareTag("Wall") || 
+            collision.gameObject.CompareTag("Question Mark") || 
+            collision.gameObject.CompareTag("Stair") || 
+            collision.gameObject.CompareTag("Tube Head"))
         {
             isGrounded = true;
             isJumping = false;
             animator.SetBool("IsJumping", false);
         }
 
+        // Big Mario can break certain objects when powered up
+        if (collision.gameObject.CompareTag("Wall") && isPoweredUp)
+        {
+            Destroy(collision.gameObject);
+        }
+
+        // Handle enemy collision
         if (collision.gameObject.CompareTag("Enemy"))
         {
             ContactPoint2D[] contacts = collision.contacts;
             foreach (ContactPoint2D contact in contacts)
             {
-                if (contact.normal.y > 0.5f) // Mario lands on top of Goomba
+                if (contact.normal.y > 0.5f) // Mario lands on top of an enemy
                 {
-                    if (stompSound != null) // Play stomp sound
-                    {
-                        stompSound.Play();
-                    }
-                    Destroy(collision.gameObject); // Remove Goomba
+                    SoundManager.instance.PlayStompSound();
+                    Destroy(collision.gameObject); // Remove enemy
                     rb.velocity = new Vector2(rb.velocity.x, jumpHeight); // Mario bounces
                     return;
                 }
             }
-            Die(); // Mario dies only if not from the top
+
+            // If Mario is powered up, he loses power instead of dying
+            if (isPoweredUp)
+            {
+                LosePowerUp();
+            }
+            else
+            {
+                Die(); // Mario dies only if not from the top
+            }
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        // Ensure Mario isn't considered grounded when leaving a solid object
+        if (collision.gameObject.CompareTag("Floor") || 
+            collision.gameObject.CompareTag("Wall") || 
+            collision.gameObject.CompareTag("Question Mark") || 
+            collision.gameObject.CompareTag("Stair") || 
+            collision.gameObject.CompareTag("Tube Head"))
         {
             isGrounded = false;
         }
@@ -151,11 +150,7 @@ public class MarioController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Item"))
         {
-            if (pickupSound != null)
-            {
-                pickupSound.Play();
-            }
-
+            SoundManager.instance.PlayPickupSound();
             Destroy(other.gameObject);
         }
 
@@ -166,12 +161,13 @@ public class MarioController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Entrance"))
         {
-            rb.position = new Vector2(50f, -40f);
+            SoundManager.instance.PlayClearStageSound();
+            SceneManager.LoadScene("Secret");
         }
 
         if (other.gameObject.CompareTag("Exit"))
         {
-            rb.position = new Vector2(152f, -0.3496383f);
+            SceneManager.LoadScene("Main");
         }
     }
 
@@ -180,19 +176,41 @@ public class MarioController : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        animator.SetTrigger("Die");
-        StopWalkingSound();
+
+        //animator.SetTrigger("Die");
+        animator.enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        Instantiate(DeadMarioObject, transform.position, Quaternion.identity);
+
+
+        SoundManager.instance.StopWalkSound();
+        SoundManager.instance.PlayDeathSound();
+
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        if (deathSound != null)
-        {
-            deathSound.Play();
-        }
-
         StartCoroutine(RestartLevel());
     }
+
+    public void ReceivePowerUp()
+    {
+        isPoweredUp = true;
+
+        //temporary in place for the big mario
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        animator.SetBool("IsSuperMario", true);
+    }
+
+    private void LosePowerUp()
+    {
+        isPoweredUp = false;
+
+        //temporary in place for the big mario
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        animator.SetBool("IsSuperMario", true);
+
+    }   
 
     IEnumerator RestartLevel()
     {

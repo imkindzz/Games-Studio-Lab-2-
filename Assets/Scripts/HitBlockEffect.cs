@@ -19,7 +19,7 @@ public class HitBlockEffect : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         //checks if the colliding object is the player) and that hits could be maade
-        if (collision.tag.Equals("Player") && !IsNoMoreGetItemAttempt())
+        if (collision.CompareTag("Player") && !IsNoMoreGetItemAttempt())
         {
             switch (gameObject.tag)
             {
